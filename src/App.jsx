@@ -7,6 +7,9 @@ import { useEffect, useState } from "react"
 import { getConfig, BASE_URL } from "./helpers/config"
 import { AuthContext } from './context/authContext'
 import axios from "axios"
+import Role from "./components/Role"
+import AddRole from "./components/Role/add"
+import AddEdit from "./components/Role/edit"
 
 function App() {
   const [accessToken, setAccessToken] = useState(JSON.parse(localStorage.getItem('currentToken')))
@@ -37,6 +40,9 @@ function App() {
           <Route path="/" element={ <Home /> } />
           <Route path="/login" element={ <Login /> } />
           <Route path="/register" element={ <Register /> } />
+          <Route path="/roles" element={ <Role /> } />
+          <Route path="/roles/add" element={ <AddRole /> } />
+          <Route path="/roles/:id/edit" element={<AddEdit />} />
         </Routes>
       </BrowserRouter>
     </AuthContext.Provider>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/authContext'
 import { BASE_URL, getConfig } from '../../helpers/config'
@@ -10,7 +10,7 @@ export default function Header() {
 
     const logoutUser = async () => {
         try {
-            const response = await axios.post(`${BASE_URL}/user/logout`, null, getConfig(accessToken))
+            const response = await axios.post(`${BASE_URL}/logout`, null, getConfig(accessToken))
             localStorage.removeItem('currentToken')
             setCurrentUser(null)
             setAccessToken('')
@@ -24,7 +24,6 @@ export default function Header() {
             console.log(error)
         }
     }
-
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">

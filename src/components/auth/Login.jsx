@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { BASE_URL } from '../../helpers/config'
@@ -27,7 +27,7 @@ export default function Login() {
         const data = { email, password}
 
         try {
-            const response = await axios.post(`${BASE_URL}/user/login`, data)
+            const response = await axios.post(`${BASE_URL}/login`, data)
             if (response.data.error) {
                 setLoading(false)
                 toast.error(response.data.error)
